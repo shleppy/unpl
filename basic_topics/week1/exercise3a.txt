@@ -1,0 +1,42 @@
+/* Exercise 3 */
+/* int val(int p1, double * p2, char *p3); */
+
+/* Code Snippets:
+ *
+ * int r, a; double d; char s[4];
+ * &r = val(&a, d, s);      //a
+ * r = val(a, &d, s);       //b
+ * r = val(a, &d, &s);      //c
+ * r = val(a, &d, &s[0]);   //d
+ */
+
+    /* Answers: 
+     *
+     * Can't assign to address, because &r is a unmodifiable lvalue  // false
+     * valid
+     * Trying to assign an address when expecting a pointer          // false
+     * valid
+     */ 
+
+    /* Testing */
+    int val(int p1, double* p2, char* p3);
+
+    char s[4] = {'a', 'c', 'd', 'b'};
+    int r, a; double d; s[4];
+    
+    /* a */
+    // a = 2; d = 4.0; 
+    // &r = val(&a, d, s);
+
+    /* b */
+    r = val(a, &d, s);
+    printf("b = %d", r);
+
+    /* c */
+    r = val(a, &d, &s);
+    printf("b = %d", r);
+
+    /* d */
+    r = val(a, &d, &s[0]);
+    printf("b = %d", r);
+
