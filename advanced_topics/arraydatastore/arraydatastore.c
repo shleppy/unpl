@@ -11,8 +11,10 @@ void init(int n)
     /* malloc enough space for n char pointers.
      * memset to ensure all bytes are set to zero.
      */
-    global_arr.data = calloc(n, n * sizeof(char));    
-    global_arr.size = n;
+    global_arr = (array_data_store) {
+        .data = calloc(n, n * sizeof(char*)),
+        .size = n
+    };
 
     if (!global_arr.data) 
     {
